@@ -7,7 +7,7 @@
 - allows to create platforms based on server-side
 - uses asynchronous programming nature (`async ---- await`)
 
-## NPM
+## NPM (Node Package Manager)
 When you download node, it ships with npm (node package manager).  This helps you to run your scripts and as well manage your dependencies (modules ie. node_modules). 
 
 ## Node Modules
@@ -86,3 +86,31 @@ This is a type of a header that allows server to indicate any origins (domain, s
 
 This is how we export
 `module.exports = what you export`
+
+
+## Recap on Arrays and Objects
+Arrays `const cars = ["BMW", "TOYOTA", "HUDAI"]`
+Object 
+```javascript
+const propertiesOfCar = {
+    color: "red",
+    brand: "ferari",
+    enginType: "V8"
+}
+```
+
+example of an array containing object
+```javascript
+const notes = [
+    {
+        id: 1,
+        title: "This is a title",
+        content: "This is content"
+    },
+    {
+        id: 2,
+        title: "....",
+        content: "......."
+    }
+]
+```

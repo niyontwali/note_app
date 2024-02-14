@@ -1,6 +1,9 @@
 // import express
 const express = require("express");
 
+// import helmet
+const helmet = require("helmet")
+
 // import cors
 const cors = require("cors");
 const noteRoute = require("./routes/notesRoutes");
@@ -13,13 +16,15 @@ const app = express();
 
 // use cors
 app.use(cors());
+// use hemlmet
+app.use(helmet())
 
 // root endpoint
 // app which is the invocation of express() has
 // a properties of all methods (get, post, put/patch and delete)
 app.get("/", (req, res) => {
   return res.status(200).json({
-    message: "Account Created Successful",
+    message: "Welcome to the Note App Project APIs",
   });
 });
 

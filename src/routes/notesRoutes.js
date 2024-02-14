@@ -6,7 +6,7 @@ const { notes } = require('../utils');
 const router = express.Router()
 
 
-router.get("/" , (req, res) => { 
+router.get("/" , (req, res) => {  
     return res.status(200).json({
         message: "All notes",
         data: notes
