@@ -45,3 +45,44 @@ e.g
 - Nodemon: This is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected. **Note**: This is a devDependency
 
 Installing dependencies we run `npm install name_of_pkg or npm i name_of_pkg`. To specify that you want to install a devDependency you put after the command a flag of `-D` or `--save-dev` 
+
+## Uninstalling a Package
+`npm uninstall name_of_package`
+
+## Dotenv
+Dotenv is a zero-dependency module that loads environment variables from a .env file into `process.env`.
+
+## How to run a node script
+`npm run name_of_the_script`
+
+## Components of Server
+These are the minimum components a server should have
+1. IP (`localhost or 127.0.0.1`)
+2. PORT 
+3. Endpoints(routes)
+
+## Recap
+```javascript
+// syntax of a function using ES5
+function nameOfFunction(param1, param2, param3, ....) {
+    // block of code
+}
+
+// syntax of a function using ES6
+const nameOfFunction = (param1, param2, ...) => {
+    // block of code
+    
+}
+
+// arguments are values passed into a function when invoiking/calling it
+nameOfFunction(arg1, arg2, arg3, .....)
+```
+
+## CORS (Cross Origin Resource Sharing)
+This is a type of a header that allows server to indicate any origins (domain, scheme or port)
+
+## Export a module (file) 
+- All files in a node js project are modules as long they can be accessed outside that very file
+
+This is how we export
+`module.exports = what you export`
