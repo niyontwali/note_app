@@ -14,6 +14,9 @@ require("dotenv").config();
 // initializing/invoking/calling express object/function
 const app = express();
 
+// use body parser from expres
+app.use(express.json())
+
 // use cors
 app.use(cors());
 // use hemlmet

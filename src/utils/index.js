@@ -11,4 +11,21 @@ const notes = [
   }
 ];
 
-module.exports = { notes };
+
+const patients = [
+  {
+    id: 1,
+    fullName: "Jane Doe",
+    age: 20,
+    insurances: ["sanram", "radiant", "mmi"],
+  },
+  {
+    id: 2,
+    fullName: "John Doe",
+    age: 20,
+    insurances: ["sanram", "radiant"],
+  },
+];
+
+module.exports = {notes, patients}
+// module.exports : This exports files so that they can be used outside this file

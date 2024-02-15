@@ -114,3 +114,10 @@ const notes = [
     }
 ]
 ```
+
+## CRUD (Create, Read, Update, Delete)
+
+## Higher Order functions
+These are function that take in other functions as parameters
+e.g 
+1. `find`: 
