@@ -121,3 +121,32 @@ const notes = [
 These are function that take in other functions as parameters
 e.g 
 1. `find`: 
+
+
+## What is a param
+https://domain.com/blogs/5
+
+The `5` here is a param. We access the param by using 
+`req.params.nameOfParam`
+
+## Accessing Body or Content from a post http method
+We use the `req` object to access the **body** by 
+`req.body`
+
+
+https://dev.mysql.com/downloads/installer/
+
+
+## Database
+NodeJs can be integrated with any database be Relational databases like `mysql` or Non-relational databases like `mongodb`. We shall use in this project `mysql`. 
+
+### Installing mysql in node
+`npm install mysql2`
+
+### ORM
+Object–relational mapping (ORM, O/RM, and O/R mapping tool) in computer science is a programming technique for converting data between a relational database and the heap of an object-oriented programming language. This creates, in effect, a virtual object database that can be used from within the programming language.
+
+ie. We can use normal programing syntax to interact with databases without writing pure queries 
+
+#### Example of ORM
+- Sequelize: This is a nodejs ORM

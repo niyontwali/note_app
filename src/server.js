@@ -42,11 +42,10 @@ app.get("*", (req, res) => {
 });
 
 // define your port and host
-const port = process.env.PORT;
-const host = process.env.HOST;
+const { PORT, HOST } = process.env;
 
 // listening to server
-app.listen(port, () => {
-  console.log(`Server running at ${host}:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running at ${HOST}:${PORT}`);
   // localhost:8089
 });
