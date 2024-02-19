@@ -1,24 +1,23 @@
-let notes = []
+const { Note } = require("../database/models");
+
+let notes = [];
 
 // Fetching all notes
-const getNotes = (req, res) => {
+const getNotes = async (req, res) => {
+  // fetch notes from our db using model Note
+  const data = await Note.findAll();
   return res.status(200).json({
-    data: notes,
+    data,
   });
 };
 
 // fething a single note
-const getSingleNote = (req, res) => {
+const getSingleNote = async(req, res) => {
   // get our note id
-
   const noteId = parseInt(req.params.noteId);
 
   // Use the noteId to find a note with that id
-  const oneNote = notes.find((note) => {
-    return note.id === noteId;
-  });
-
-  console.log(oneNote);
+  const oneNote = await Note.findByPk(noteId);
 
   if (!oneNote) {
     // if it is undefined
@@ -33,32 +32,28 @@ const getSingleNote = (req, res) => {
 };
 
 // add note
-const addNote = (req, res) => {
+const addNote = async (req, res) => {
   // get your body element/field
   const { title, content } = req.body;
-  /**
-   * The above is the same as below
-   * const title = req.body.title <=> const {title} = req.body
-   * const content = req.body.cont <=> const {content} = req.body
-   */
 
-  // define the new id
-  const id = notes.length + 1;
+  const noteExists = await Note.findOne({ where: { title } });
 
-  // now our note will be this
-  const newNote = {
-    id,
+  if (noteExists) {
+    return res.status(400).json({
+      message: `Note with title : ${title} already exists`,
+    });
+  }
+
+  // create a new note
+  const newNote = await Note.create({
     title,
     content,
-  };
-
-  // push now the new note into notes
-  notes.push(newNote);
+  });
 
   // return to the user a message
   res.status(201).json({
     message: "A new has been created",
-    data: notes,
+    data: newNote,
   });
 };
 
@@ -66,26 +61,21 @@ const addNote = (req, res) => {
 const deleteNote = (req, res) => {
   // get the id from the params
   const { noteId } = req.params;
-  const id = parseInt(noteId)
+  const id = parseInt(noteId);
 
   // use the id above to look for a note matching that id
   const noteToDeleteIndex = notes.findIndex((note) => {
-    return note.id === id
-  })
+    return note.id === id;
+  });
 
-  notes.splice(noteToDeleteIndex, 1)
+  notes.splice(noteToDeleteIndex, 1);
 
   return res.status(200).json({
     message: "Successfully deleted",
-    data: notes
-  })
+    data: notes,
+  });
 
-
-  console.log(noteToDeleteIndex)
-
-  
-
-  
+  console.log(noteToDeleteIndex);
 };
 
 module.exports = { getNotes, getSingleNote, addNote, deleteNote };

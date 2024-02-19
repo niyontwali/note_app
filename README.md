@@ -150,3 +150,34 @@ ie. We can use normal programing syntax to interact with databases without writi
 
 #### Example of ORM
 - Sequelize: This is a nodejs ORM
+
+## Asynchronous JavaScript
+This is mainly used when you are dealing with data that will take time to process and you need to wait for the processing to get done. 
+e.g Asynchronous Functions
+These are function that will need to wait for some data to get processed for them to continue. 
+### Syntax
+```javascript
+const getNotes = async () => {
+ // block of codes
+ await ....... // You will use await on any functionality that might time, e.g creating in database, fetching from database
+}
+```
+
+## Sequelize Model Methods
+1. For create: `create({data})` 
+e.g
+ ```javascript
+ModelName.create({
+    title,
+    content
+})```
+
+2. For fetching all: `findAll()`
+eg. `ModelName.findAll()`
+
+3. For fetching a sigle item: `findOne({where: {id}})`
+eg. `ModelName.findOne({where: {id: 4}})`
+
+4. For updating: `findOne({where: {id}}) and set()` 
+
+5. for deleting: `findOne({where: {id}}) and destroy()`
