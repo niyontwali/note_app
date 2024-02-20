@@ -1,7 +1,5 @@
 const { Note } = require("../database/models");
 
-let notes = [];
-
 // Fetching all notes
 const getNotes = async (req, res) => {
   // fetch notes from our db using model Note
@@ -13,22 +11,25 @@ const getNotes = async (req, res) => {
 
 // fething a single note
 const getSingleNote = async(req, res) => {
-  // get our note id
+  // get note id
   const noteId = parseInt(req.params.noteId);
 
   // Use the noteId to find a note with that id
   const oneNote = await Note.findByPk(noteId);
+  // alternative:  const oneNote = await Note.findOne({where: {nodeId}})
 
   if (!oneNote) {
-    // if it is undefined
+    // if there is no note or if oneNote is undefined
     return res.status(404).json({
       message: `Note with id: ${noteId} was not found`,
     });
   }
 
-  res.status(200).json({
+  // return the data of oneNote
+  return res.status(200).json({
     data: oneNote,
   });
+
 };
 
 // add note
@@ -57,25 +58,68 @@ const addNote = async (req, res) => {
   });
 };
 
+// update notes
+const updateNote = async (req, res) => {
+  // get id from params
+  const {noteId} = req.params
+  const id = parseInt(noteId)
+
+  // provide a body for the items to be updated
+  const {title, content } = req.body
+
+  // get a note with that id
+  const oneNote = await Note.findByPk(id);
+
+  if (!oneNote) {
+    return res.status(404).json({
+      message: `Note with id: ${id} not found`
+    })
+  }
+
+  // use that note to identify field from your body that you need to update
+  if (title ) {
+    oneNote.title = title
+  }
+
+  if (content) {
+    oneNote.content = content 
+  }
+
+  // save your notes
+  await oneNote.save()
+
+  // communicate to your user
+  return res.status(200).json({
+    message: "Successfully updated Note",
+  });
+}
+
+
 // delete
-const deleteNote = (req, res) => {
+const deleteNote = async (req, res) => {
   // get the id from the params
   const { noteId } = req.params;
   const id = parseInt(noteId);
 
-  // use the id above to look for a note matching that id
-  const noteToDeleteIndex = notes.findIndex((note) => {
-    return note.id === id;
-  });
+  // get a note with the id
+  const oneNote = await Note.findByPk(id)
 
-  notes.splice(noteToDeleteIndex, 1);
+  // if the note is not found
+  if (!oneNote) {
+    return res.status(404).json({
+      message: `Note with id: ${id} is not found`
+    })
+  }
 
+  // delete the note
+  await oneNote.destroy()
+
+  // show a message to the user
   return res.status(200).json({
     message: "Successfully deleted",
-    data: notes,
   });
 
-  console.log(noteToDeleteIndex);
 };
 
-module.exports = { getNotes, getSingleNote, addNote, deleteNote };
+
+module.exports = { getNotes, getSingleNote, addNote, updateNote, deleteNote };

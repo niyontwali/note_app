@@ -7,15 +7,19 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "migrate": "npx sequelize-cli db:migrate",
-    "rollback": "npx sequelize-cli db:migrate:undo"
+    "rollback:one": "npx sequelize-cli db:migrate:undo",
+    "rollback:all": "npx sequelize-cli db:migrate:undo:all"
   },
   "author": "John Niyontwali",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
     "dotenv": "^16.4.3",
     "express": "^4.18.2",
     "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.1",
     "rwanda": "^2.1.6",
     "sequelize": "^6.37.0"

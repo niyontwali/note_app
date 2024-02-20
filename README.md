@@ -177,6 +177,7 @@ eg. `ModelName.findAll()`
 
 3. For fetching a sigle item: `findOne({where: {id}})`
 eg. `ModelName.findOne({where: {id: 4}})`
+or `ModelName.findByPK(pk)`
 
 4. For updating: `findOne({where: {id}}) and set()` 
 

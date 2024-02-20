@@ -4,6 +4,7 @@ const {
   getNotes,
   getSingleNote,
   addNote,
+  updateNote,
   deleteNote,
 } = require("../controllers/notesController");
 
@@ -19,6 +20,9 @@ router.get("/:noteId", getSingleNote)
 
 // add note
 router.post("/", addNote)
+
+// update note
+router.put("/:noteId", updateNote);
 
 // delete note
 router.delete("/:noteId", deleteNote )

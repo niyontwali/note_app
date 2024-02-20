@@ -6,7 +6,11 @@ const helmet = require("helmet")
 
 // import cors
 const cors = require("cors");
+
+// file imports
 const noteRoute = require("./routes/notesRoutes");
+const userRoute = require("./routes/usersRoutes");
+const authRoute = require("./routes/authRoutes");
 
 // imports for db
 const { sequelize } = require("./database/models");
@@ -35,7 +39,9 @@ app.get("/", (req, res) => {
 });
 
 // all routes
-app.use("/notes", noteRoute);
+app.use("/notes", noteRoute); // localhost:8080/notes
+app.use("/users", userRoute); // localhost:8080/users
+app.use("/auth", authRoute); // localhost:8080/auth
 
 // not found
 app.get("*", (req, res) => {
